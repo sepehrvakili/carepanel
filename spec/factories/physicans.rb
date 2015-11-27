@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :doctor do
+  factory :physican do
     name "MyString"
 specialty "MyString"
 hospital_id 1

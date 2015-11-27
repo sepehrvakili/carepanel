@@ -17,11 +17,14 @@ ActiveRecord::Schema.define(version: 20151127034026) do
   enable_extension "plpgsql"
 
   create_table "caretakers", force: :cascade do |t|
-    t.integer  "physician_id", null: false
-    t.integer  "patient_id",   null: false
+    t.integer  "physician_id"
+    t.integer  "patient_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "caretakers", ["patient_id"], name: "index_caretakers_on_patient_id", using: :btree
+  add_index "caretakers", ["physician_id"], name: "index_caretakers_on_physician_id", using: :btree
 
   create_table "hospitals", force: :cascade do |t|
     t.string   "name"

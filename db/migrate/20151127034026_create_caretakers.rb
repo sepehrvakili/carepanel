@@ -1,8 +1,8 @@
 class CreateCaretakers < ActiveRecord::Migration
   def change
     create_table :caretakers do |t|
-      t.integer :physician_id, null: false
-      t.integer :patient_id, null: false
+      t.belongs_to :physician, index: true
+      t.belongs_to :patient, index: true
 
       t.timestamps null: false
     end
