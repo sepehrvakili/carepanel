@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127034026) do
+ActiveRecord::Schema.define(version: 20151127040014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,13 +46,17 @@ ActiveRecord::Schema.define(version: 20151127034026) do
     t.integer  "hospital_id"
   end
 
+  add_index "patients", ["hospital_id"], name: "index_patients_on_hospital_id", using: :btree
+
   create_table "physicians", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "specialty"
-    t.integer  "hospital_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "hospital_id"
   end
+
+  add_index "physicians", ["hospital_id"], name: "index_physicians_on_hospital_id", using: :btree
 
   create_table "relatives", force: :cascade do |t|
     t.string   "name",       null: false
@@ -82,4 +86,6 @@ ActiveRecord::Schema.define(version: 20151127034026) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "patients", "hospitals"
+  add_foreign_key "physicians", "hospitals"
 end
