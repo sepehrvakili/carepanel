@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128043631) do
+ActiveRecord::Schema.define(version: 20151127040014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,9 @@ ActiveRecord::Schema.define(version: 20151128043631) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "hospital_id"
-    t.integer  "user_id"
   end
 
   add_index "physicians", ["hospital_id"], name: "index_physicians_on_hospital_id", using: :btree
-  add_index "physicians", ["user_id"], name: "index_physicians_on_user_id", using: :btree
 
   create_table "relatives", force: :cascade do |t|
     t.string   "name",       null: false
@@ -90,5 +88,4 @@ ActiveRecord::Schema.define(version: 20151128043631) do
 
   add_foreign_key "patients", "hospitals"
   add_foreign_key "physicians", "hospitals"
-  add_foreign_key "physicians", "users"
 end
