@@ -19,6 +19,7 @@ gem 'devise'
 gem 'high_voltage'
 gem 'pg'
 gem 'puma'
+gem 'paperclip', '~> 4.3'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
