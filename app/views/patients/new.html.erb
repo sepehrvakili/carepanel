@@ -1,0 +1,10 @@
+<h3>New Patient</h3>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li><%= link_to 'View All Patients', patients_path %></li>
+  <li class="active"><%= link_to 'New Patient', new_patient_path %></li>
+</ul>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', patients_path %>

@@ -7,6 +7,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'aws-sdk-v1'
+
 group :development, :test do
   gem 'byebug'
 end
@@ -25,6 +27,7 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
+  gem 'pry'
 end
 group :development, :test do
   gem 'factory_girl_rails'

@@ -1,0 +1,39 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li><%= link_to 'View All Patients', patients_path %></li>
+  <li class="active"><%= link_to "#{@patient.name}", patient %></li>
+</ul>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @patient.name %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @patient.room %>
+</p>
+
+<p>
+  <strong>Checkin date:</strong>
+  <%= @patient.checkin_date %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @patient.release_date %>
+</p>
+
+<p>
+  <strong>Hospital:</strong>
+  <%= @patient.hospital_id %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= @patient.avatar %>
+</p>
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>

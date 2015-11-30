@@ -1,0 +1,56 @@
+<%= form_for(@patient, html: {class: 'form-horizontal'}) do |f| %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :name, class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-10"> 
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :room, class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-10"> 
+      <%= f.text_field :room, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :checkin_date, class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-10"> 
+      <%= f.date_field :checkin_date, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :release_date, class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-10"> 
+      <%= f.date_field :release_date, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :hospital_id, class: 'col-sm-2 control-label' %><br>
+    <% options = options_from_collection_for_select(Hospital.all, 'id', 'name') %>
+    <div class="col-sm-10"> 
+      <%= f.select :hospital_id, options %>
+    </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :Photo, class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-10">
+      <%= f.file_field :avatar, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="actions form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit 'Submit', class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

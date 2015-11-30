@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @physician.name %>
+</p>
+
+<p>
+  <strong>Specialty:</strong>
+  <%= @physician.specialty %>
+</p>
+
+<p>
+  <strong>Hospital:</strong>
+  <%= Hospital.find(@physician.hospital_id).name %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  
+  <%= image_tag @physician.avatar.url(:medium) %>
+</p>
+
+<%= link_to 'Edit', edit_physician_path(@physician), class: "btn btn-default btn-sm" %> |
+<%= link_to 'Back', physicians_path, class: "btn btn-default btn-sm" %>

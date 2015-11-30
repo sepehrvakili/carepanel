@@ -1,6 +1,6 @@
-class CreateDoctors < ActiveRecord::Migration
+class CreatePhysicians < ActiveRecord::Migration
   def change
-    create_table :doctors do |t|
+    create_table :physicans do |t|
       t.string :name, null: false
       t.string :specialty
       t.integer :hospital_id
