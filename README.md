@@ -1,5 +1,42 @@
-Carepanel
+connectUs
 ================
+
+##Models
+
+###patient
+- name
+- room
+- hospital_id
+- check-in_date
+- release_date
+- photo
+
+has_many :doctors
+
+has_many :relatives
+
+###physician
+- name
+- specialty
+- hospital_id
+
+has_many :patients
+
+###relative
+- name
+- relation
+- phone
+- patient_id
+
+###hospital
+- name
+- address
+- city
+- zip
+- state
+- phone
+
+-----------
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
