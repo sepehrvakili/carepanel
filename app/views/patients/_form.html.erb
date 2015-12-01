@@ -45,7 +45,7 @@
     <%= f.label :caretakers, class: 'col-sm-2 control-label' %><br>
     <% options = options_from_collection_for_select(Physician.all, 'id', 'name') %>
     <div class="col-sm-10"> 
-      <%= f.select :caretakers, options, {prompt: "Select Caretakers"}, {:multiple => true} %>
+      <%= f.select :caretakers, options, {}, { :multiple => true, :name => 'caretakers[physician_ids][]' } %>
     </div>
   </div>
   <div class="field form-group">

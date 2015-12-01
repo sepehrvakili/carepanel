@@ -2,40 +2,91 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @patient.bio %>
-</p>
-
-<p>
-  <strong>Room:</strong>
-  <%= @patient.room %>
-</p>
-
-<p>
-  <strong>Checkin date:</strong>
-  <%= @patient.checkin_date %>
-</p>
-
-<p>
-  <strong>Release date:</strong>
-  <%= @patient.release_date %>
-</p>
-
-<p>
-  <strong>Hospital:</strong>
-  <%= Hospital.find(@patient.hospital_id).name %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
+<div class="col-sm-4">
   <%= image_tag @patient.avatar.url(:medium) %>
-</p>
+</div>
+<div class="col-sm-8">
+  <p>
+    <strong>Bio:</strong>
+    <%= @patient.bio %>
+  </p>
 
-<%= link_to 'Edit', edit_patient_path(@patient), class: "btn btn-default btn-sm" %> |
-<%= link_to 'Back', patients_path, class: "btn btn-default btn-sm" %>
+  <p>
+    <strong>Room:</strong>
+    <%= @patient.room %>
+  </p>
 
+  <p>
+    <strong>Checkin date:</strong>
+    <%= @patient.checkin_date %>
+  </p>
 
-<%= link_to new_patient_relative_path(@patient), class: "btn btn-success" do %>
-  <i class="glyphicon glyphicon-plus"></i> New Relative
+  <p>
+    <strong>Release date:</strong>
+    <%= @patient.release_date %>
+  </p>
+
+  <p>
+    <strong>Hospital:</strong>
+    <%= Hospital.find(@patient.hospital_id).name %>
+  </p>
+</div>
+
+<div class="col-sm-12">
+  <table class="table table-responsive table-striped">
+  <thead>
+    <tr>
+      <th class="col-sm-2">Assigned Providers</th>
+      <th class="col-sm-2">Name</th>
+      <th class="col-sm-4">Bio</th>
+      <th class="col-sm-2">Specialty</th>
+      <th class="col-sm-2">Hospital</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @physicians = Physician.all %>
+    <% @physicians.each do |physician| %>
+      <tr>
+        <td><%= link_to( image_tag(physician.avatar.url(:thumb)), physician) %></td>
+        <td><%= physician.name %></td>
+        <td><%= physician.bio %></td>
+        <td><%= physician.specialty %></td>
+        <td><%= Hospital.find(physician.hospital_id).name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<div class="col-sm-12">
+  <table class="table table-responsive table-striped">
+  <thead>
+    <tr>
+      <th class="col-sm-2">Registered Family & Friends</th>
+      <th class="col-sm-2">Name</th>
+      <th class="col-sm-4">Bio</th>
+      <th class="col-sm-2">Relation</th>
+      <th class="col-sm-2">Phone</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @relatives = Relative.where(patient_id: @patient) %>
+    <% @relatives.each do |relative| %>
+      <tr>
+        <td><%= image_tag relative.avatar.url(:thumb) %></td>
+        <td><%= relative.name %></td>
+        <td><%= relative.bio %></td>
+        <td><%= relative.relation %></td>
+        <td><%= relative.phone %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<%= link_to new_relative_path, class: "btn btn-success btn-sm" do %>
+  <i class="glyphicon glyphicon-plus"></i> Register New Relative
 <% end %>
+<%= link_to 'Edit Patient Profile', edit_patient_path(@patient), class: "btn btn-default btn-sm" %>

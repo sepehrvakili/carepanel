@@ -1,24 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @relative.name %>
-</p>
+<div class="col-sm-4">
+  <%= image_tag @relative.avatar.url(:medium) %>
+</div>
+<div class="col-sm-8">
+  <p>
+    <strong>Bio:</strong>
+    <%= @relative.bio %>
+  </p>
 
-<p>
-  <strong>Relation:</strong>
-  <%= @relative.relation %>
-</p>
+  <p>
+    <strong>Relation:</strong>
+    <%= @relative.relation %>
+  </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @relative.phone %>
-</p>
+  <p>
+    <strong>Phone:</strong>
+    <%= @relative.phone %>
+  </p>
 
-<p>
-  <strong>Patient:</strong>
-  <%= @relative.patient_id %>
-</p>
+  <p>
+    <strong>Patient:</strong>
+    <%= Patient.find(@relative.patient_id).name %>
+  </p>
+</div>
+
 
 <%= link_to 'Edit', edit_relative_path(@relative) %> |
-<%= link_to 'Back', patient_relative_path %>
+<%= link_to 'Back', relatives_path %>

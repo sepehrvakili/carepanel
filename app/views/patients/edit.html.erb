@@ -2,7 +2,7 @@
 
 <ul class="nav nav-tabs" role="tablist">
   <li><%= link_to 'View All Patients', patients_path %></li>
-  <li class="active"><%= link_to "Edit: #{@patient.name}", patient %></li>
+  <li class="active"><%= link_to "#{@patient.name}" %></li>
 </ul>
 
 <%= render 'form' %>

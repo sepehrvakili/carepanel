@@ -25,7 +25,7 @@ class RelativesController < ApplicationController
   # POST /relatives.json
   def create
     @relative = Relative.new(relative_params)
-
+    binding.pry
     respond_to do |format|
       if @relative.save
         format.html { redirect_to @relative, notice: 'Relative was successfully created.' }
@@ -69,6 +69,6 @@ class RelativesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relative_params
-      params.require(:relative).permit(:name, :relation, :phone, :patient_id)
+      params.require(:relative).permit(:name, :bio, :relation, :phone, :patient_id, :avatar)
     end
 end
