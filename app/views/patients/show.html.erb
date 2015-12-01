@@ -1,13 +1,10 @@
-<ul class="nav nav-tabs" role="tablist">
-  <li><%= link_to 'View All Patients', patients_path %></li>
-  <li class="active"><%= link_to "#{@patient.name}", patient %></li>
-</ul>
+<h3>Patient: <%= @patient.name %></h3>
 
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @patient.name %>
+  <strong>Bio:</strong>
+  <%= @patient.bio %>
 </p>
 
 <p>
@@ -27,13 +24,18 @@
 
 <p>
   <strong>Hospital:</strong>
-  <%= @patient.hospital_id %>
+  <%= Hospital.find(@patient.hospital_id).name %>
 </p>
 
 <p>
-  <strong>Avatar:</strong>
-  <%= @patient.avatar %>
+  <strong>Photo:</strong>
+  <%= image_tag @patient.avatar.url(:medium) %>
 </p>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Edit', edit_patient_path(@patient), class: "btn btn-default btn-sm" %> |
+<%= link_to 'Back', patients_path, class: "btn btn-default btn-sm" %>
+
+
+<%= link_to new_patient_relative_path(@patient), class: "btn btn-success" do %>
+  <i class="glyphicon glyphicon-plus"></i> New Relative
+<% end %>

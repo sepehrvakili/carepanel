@@ -1,4 +1,9 @@
-<h1>Editing Physician</h1>
+<h3>Edit Provider</h3>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li><%= link_to 'View All Providers', physicians_path %></li>
+  <li class="active"><%= link_to 'Edit Provider', edit_physician_path %></li>
+</ul>
 
 <%= render 'form' %>
 

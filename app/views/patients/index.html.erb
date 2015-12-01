@@ -12,7 +12,6 @@
     <tr>
       <th>Photo</th>
       <th>Name</th>
-      <th>Physicians</th>
       <th>Room</th>
       <th>Check-in date</th>
       <th>Release date</th>
@@ -24,13 +23,12 @@
   <tbody>
     <% @patients.each do |patient| %>
       <tr>
-        <td><%= image_tag physician.avatar.url(:thumb) %></td>
+        <td><%= link_to( image_tag(patient.avatar.url(:thumb)), patient) %></td>
         <td><%= patient.name %></td>
-        <th></th>
         <td><%= patient.room %></td>
         <td><%= patient.checkin_date %></td>
         <td><%= patient.release_date %></td>
-        <td><%= Hospital.find(physician.hospital_id).name %></td>
+        <td><%= Hospital.find(patient.hospital_id).name %></td>
         <td><%= link_to 'Show', patient, class: "btn btn-default btn-sm" %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient), class: "btn btn-default btn-sm" %></td>
         <td><%= link_to 'Destroy', patient, class: "btn btn-default btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,4 +39,7 @@
 
 <br>
 
-<%= link_to 'New Patient', new_patient_path %>
+<%= link_to new_patient_path, class: "btn btn-success" do %>
+  <i class="glyphicon glyphicon-plus"></i> New Patient
+<% end %>
+

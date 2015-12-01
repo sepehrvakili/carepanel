@@ -1,7 +1,7 @@
 <%= form_for(@physician, html: {class: 'form-horizontal'}) do |f| %>
   <% if @physician.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@physician.errors.count, "error") %> prohibited this physician from being saved:</h2>
+      <h2><%= pluralize(@physician.errors.count, "error") %> prohibited this provider from being saved:</h2>
 
       <ul>
       <% @physician.errors.full_messages.each do |message| %>
@@ -17,7 +17,12 @@
       <%= f.text_field :name, class: 'form-control' %>
     </div>
   </div>
-
+  <div class="field form-group">
+    <%= f.label :bio, class: 'col-sm-2 control-label' %><br>
+    <div class="col-sm-10"> 
+      <%= f.text_field :bio, class: 'form-control' %>
+    </div>
+  </div>
   <div class="field form-group">
     <%= f.label :specialty, class: 'col-sm-2 control-label' %><br>
     <div class="col-sm-10"> 

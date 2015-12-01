@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Relatives</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Relation</th>
+      <th>Phone</th>
+      <th>Patient</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @relatives.each do |relative| %>
+      <tr>
+        <td><%= relative.name %></td>
+        <td><%= relative.relation %></td>
+        <td><%= relative.phone %></td>
+        <td><%= relative.patient_id %></td>
+        <td><%= link_to 'Show', relative %></td>
+        <td><%= link_to 'Edit', edit_relative_path(relative) %></td>
+        <td><%= link_to 'Destroy', relative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Relative', new_relative_path %>

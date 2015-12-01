@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Bio:</strong>
+  <%= @physician.bio %>
+</p>
+
+<p>
   <strong>Specialty:</strong>
   <%= @physician.specialty %>
 </p>
@@ -17,7 +22,6 @@
 
 <p>
   <strong>Photo:</strong>
-  
   <%= image_tag @physician.avatar.url(:medium) %>
 </p>
 

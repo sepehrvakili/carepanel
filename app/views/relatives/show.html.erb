@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @relative.name %>
+</p>
+
+<p>
+  <strong>Relation:</strong>
+  <%= @relative.relation %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @relative.phone %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @relative.patient_id %>
+</p>
+
+<%= link_to 'Edit', edit_relative_path(@relative) %> |
+<%= link_to 'Back', patient_relative_path %>
