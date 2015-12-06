@@ -68,6 +68,6 @@ class RelativesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relative_params
-      params.require(:relative).permit(:name, :bio, :relation, :phone, :patient_id, :avatar)
+      params.require(:relative).permit(:name, :bio, :relation, :phone, :patient_id, :avatar, :decision_maker)
     end
 end

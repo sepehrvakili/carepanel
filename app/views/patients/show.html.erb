@@ -41,6 +41,7 @@
       <th class="col-sm-4">Bio</th>
       <th class="col-sm-2">Specialty</th>
       <th class="col-sm-2">Hospital</th>
+      <th class="col-sm-1" colspan="3"></th>
     </tr>
   </thead>
 
@@ -53,6 +54,9 @@
         <td><%= physician.bio %></td>
         <td><%= physician.specialty %></td>
         <td><%= Hospital.find(physician.hospital_id).name %></td>
+        <td><%= link_to 'View', physician, class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_physician_path(physician), class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Delete', physician, class: "btn btn-default btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -68,18 +72,26 @@
       <th class="col-sm-4">Bio</th>
       <th class="col-sm-2">Relation</th>
       <th class="col-sm-2">Phone</th>
+      <th class="col-sm-1" colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @relatives = Relative.where(patient_id: @patient) %>
     <% @relatives.each do |relative| %>
+      <% if relative.decision_maker == true %>
+      <tr style="background-color: #3498db;">
+      <% else %>
       <tr>
+      <% end %>
         <td><%= image_tag relative.avatar.url(:thumb) %></td>
         <td><%= relative.name %></td>
         <td><%= relative.bio %></td>
         <td><%= relative.relation %></td>
         <td><%= relative.phone %></td>
+        <td><%= link_to 'View', relative, class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_relative_path(relative), class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Delete', relative, class: "btn btn-default btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
