@@ -25,6 +25,5 @@
   </p>
 </div>
 
-
-<%= link_to 'Edit', edit_relative_path(@relative) %> |
-<%= link_to 'Back', relatives_path %>
+<%= link_to 'Edit', edit_relative_path(@relative), class: "btn btn-default btn-sm" %> |
+<%= link_to 'Back to Patient\'s Page', patient_path(@relative.patient_id), class: "btn btn-default btn-sm" %>
